@@ -27,7 +27,13 @@ html, body{
   width:100%;
   margin:0;
   background:#0b0f1a;
-  overflow:hidden;
+  overscroll-behavior:none;
+  overflow-x:hidden;
+}
+
+body{
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
 }
   color:var(--text);
   font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
@@ -38,7 +44,11 @@ html, body{
     linear-gradient(180deg,var(--bg1),var(--bg0));
 }
 
-.tmWrap{height:100vh;overflow-y:auto;-webkit-overflow-scrolling:touch;max-width:980px;margin:0 auto;padding:14px 14px 44px;}
+.tmWrap{
+  max-width:980px;
+  margin:0 auto;
+  padding:14px 14px 44px;
+}
 
 /* HEADER */
 .tmHeader{
