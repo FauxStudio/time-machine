@@ -26,7 +26,7 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   background: #0b0f1a;
 }
   color:var(--text);
