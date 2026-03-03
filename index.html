@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>The Time Machine</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!-- THE TIME MACHINE — HTML (BIG layout, correct order, Past/Future inside Destination) -->
+<div class="tmWrap" id="tmWrap">
+
+  <!-- HEADER -->
+  <header class="tmHeader">
+    <div class="tmBrand">
+      <div class="tmLogo" aria-hidden="true">⏳</div>
+      <div class="tmBrandText">
+        <div class="tmTitle">THE TIME MACHINE</div>
+        <div class="tmSubtitle">Mobile Web-Based App Prompt Creator</div>
+        <div class="tmTagline">Click the link & teleport • Go back in time or jump into the future</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="tmCard">
+
+    <!-- 1) ADULT / CHILD -->
+    <section class="tmSection">
+      <div class="tmSectionTitle">SUBJECT TYPE</div>
+      <div class="tmSeg" data-seg="subject">
+        <button class="tmSegBtn isOn" type="button" data-value="adult">Adult</button>
+        <button class="tmSegBtn" type="button" data-value="child">Child</button>
+      </div>
+      <div class="tmHint" id="tmSubjectHint">
+        Child mode enforces child-safe environments, outfits, activities, and interactions (aging options still available).
+      </div>
+    </section>
+
+    <!-- 2) MALE / FEMALE -->
+    <section class="tmSection">
+      <div class="tmSectionTitle">GENDER</div>
+      <div class="tmSeg" data-seg="gender">
+        <button class="tmSegBtn isOn" type="button" data-value="woman">Woman</button>
+        <button class="tmSegBtn" type="button" data-value="man">Man</button>
+      </div>
+      <div class="tmHint" id="tmGenderHint">
+        Woman = glam makeup + styled hair. Man = no makeup, masculine styling only.
+      </div>
+    </section>
+
+    <!-- 3) NAME + COUNTRY (dropdown) -->
+    <section class="tmSection">
+      <div class="tmSectionTitle">INFO</div>
+      <div class="tmGrid2">
+        <label class="tmField">
+          <span class="tmLabel">Name (optional)</span>
+          <input id="tmName" type="text" placeholder="Optional" autocomplete="name" />
+        </label>
+
+        <label class="tmField">
+          <span class="tmLabel">Country</span>
+          <select id="tmCountry">
+            <option value="auto" selected>Auto</option>
+            <option value="United States">United States</option>
+            <option value="Canada">Canada</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="Australia">Australia</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Ireland">Ireland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Italy">Italy</option>
+            <option value="Spain">Spain</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Norway">Norway</option>
+            <option value="Denmark">Denmark</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Japan">Japan</option>
+            <option value="South Korea">South Korea</option>
+            <option value="China">China</option>
+            <option value="India">India</option>
+            <option value="Philippines">Philippines</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Other">Other</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <!-- 4) MODE BUTTONS -->
+    <section class="tmSection">
+      <div class="tmSectionTitle">TIME MODE</div>
+      <div class="tmSeg" data-seg="mode">
+        <button class="tmSegBtn isOn" type="button" data-value="timeline">Personal Timeline</button>
+        <button class="tmSegBtn" type="button" data-value="teleport">Teleport (Any Era)</button>
+      </div>
+      <div class="tmHint" id="tmModeHint">Pick one. The other section locks automatically.</div>
+    </section>
+
+    <!-- 5) PERSONAL TIMELINE SECTION -->
+    <section class="tmSection tmModeBlock isActive" id="tmTimelineBlock">
+      <div class="tmSectionTitle">PERSONAL TIMELINE</div>
+
+      <div class="tmGrid2">
+        <label class="tmField">
+          <span class="tmLabel">Birth Year</span>
+          <input id="tmBirthYear" inputmode="numeric" placeholder="1991" />
+        </label>
+
+        <label class="tmField">
+          <span class="tmLabel">Age in Memory</span>
+          <input id="tmAgeInMemory" inputmode="numeric" placeholder="16" />
+        </label>
+      </div>
+
+      <div class="tmHint">
+        This mode stamps <b>Date + Age</b> on a border/frame (never over the person).
+      </div>
+    </section>
+
+    <!-- 6) DESTINATION SECTION (Past/Future lives here) -->
+    <section class="tmSection tmModeBlock" id="tmDestinationBlock">
+      <div class="tmSectionTitle">DESTINATION</div>
+
+      <div class="tmGrid2">
+        <label class="tmField">
+          <span class="tmLabel">Destination Year</span>
+          <input id="tmDestYearInput" inputmode="numeric" placeholder="1987" />
+        </label>
+
+        <div class="tmField">
+          <span class="tmLabel">Past / Future</span>
+          <div class="tmSeg tmSegTight" data-seg="direction">
+            <button class="tmSegBtn isOn" type="button" data-value="past">Past</button>
+            <button class="tmSegBtn" type="button" data-value="future">Future</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tmReadouts">
+        <div class="tmReadout">
+          <div class="tmReadLabel">Computed Destination</div>
+          <div class="tmReadValue" id="tmDestComputed">—</div>
+        </div>
+        <div class="tmReadout">
+          <div class="tmReadLabel">Era</div>
+          <div class="tmReadValue" id="tmEra">—</div>
+        </div>
+      </div>
+
+      <div class="tmHint">
+        Teleport mode stamps <b>Date only</b> on a border/frame (never over the person).
+      </div>
+    </section>
+
+    <!-- 7) IDENTITY / AGE -->
+    <section class="tmSection">
+      <div class="tmSectionTitle">IDENTITY AGE</div>
+      <div class="tmSeg" data-seg="ageMode">
+        <button class="tmSegBtn isOn" type="button" data-value="uploaded">Use uploaded age</button>
+        <button class="tmSegBtn" type="button" data-value="match">Age-match styling</button>
+      </div>
+      <div class="tmHint" id="tmAgeHint">
+        Use uploaded age is best for face lock. Age-match is more experimental.
+      </div>
+    </section>
+
+    <!-- 8) REST OF CHOICES -->
+    <section class="tmSection">
+      <div class="tmSectionTitle">SCENE & STYLE</div>
+
+      <div class="tmGrid3">
+        <div class="tmBlock">
+          <div class="tmMiniTitle">Scene</div>
+          <div class="tmSeg" data-seg="scene">
+            <button class="tmSegBtn isOn" type="button" data-value="auto">Auto</button>
+            <button class="tmSegBtn" type="button" data-value="indoor">Indoor</button>
+            <button class="tmSegBtn" type="button" data-value="outdoor">Outdoor</button>
+          </div>
+          <div class="tmHint" id="tmSceneHint"></div>
+        </div>
+
+        <div class="tmBlock">
+          <div class="tmMiniTitle">Layout</div>
+          <div class="tmSeg" data-seg="layout">
+            <button class="tmSegBtn isOn" type="button" data-value="single">Single</button>
+            <button class="tmSegBtn" type="button" data-value="multi">Multi</button>
+          </div>
+          <div class="tmHint">Multi forces Scene to Auto (each panel can vary).</div>
+        </div>
+
+        <div class="tmBlock">
+          <div class="tmMiniTitle">Scrapbook Level</div>
+          <div class="tmSeg" data-seg="scrap">
+            <button class="tmSegBtn" type="button" data-value="off">Off</button>
+            <button class="tmSegBtn isOn" type="button" data-value="low">Low</button>
+            <button class="tmSegBtn" type="button" data-value="med">Medium</button>
+            <button class="tmSegBtn" type="button" data-value="high">High</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tmBlock" style="margin-top:10px;">
+        <div class="tmMiniTitle">Quote</div>
+        <label class="tmToggle">
+          <input id="tmQuote" type="checkbox" checked />
+          <span class="tmToggleUI" aria-hidden="true"></span>
+          <span class="tmToggleText">ON</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- 9) ACTIONS (COPY ONLY IN MODAL) -->
+    <section class="tmActions">
+      <button class="tmPrimary" id="tmTeleportBtn" type="button">TELEPORT</button>
+      <div class="tmMiniActions">
+        <button class="tmBtn" id="tmRerollBtn" type="button">REROLL</button>
+        <button class="tmBtn tmGhost" id="tmClearBtn" type="button">CLEAR</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PROMPT MODAL (COPY BUTTON ONLY HERE) -->
+  <div class="tmModalBack" id="tmModalBack" aria-hidden="true">
+    <div class="tmModal" role="dialog" aria-modal="true" aria-label="Generated prompt">
+      <div class="tmModalTop">
+        <div class="tmModalTitle">PROMPT</div>
+        <button class="tmX" id="tmClose" type="button">✕</button>
+      </div>
+
+      <div class="tmModalMeta" id="tmModalMeta">—</div>
+
+      <textarea id="tmPrompt" readonly spellcheck="false"></textarea>
+
+      <div class="tmModalActions">
+        <button class="tmPrimary tmSmall" id="tmCopyInModal" type="button">COPY PROMPT</button>
+        <button class="tmBtn tmSmall" id="tmClose2" type="button">CLOSE</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
