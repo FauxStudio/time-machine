@@ -25,6 +25,8 @@
 html,body{ height:100%; }
 body{
   margin:0;
+  overscroll-behavior: none;
+overflow-x: hidden;
   color:var(--text);
   font-family: ui-rounded, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   background:
