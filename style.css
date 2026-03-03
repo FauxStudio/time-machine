@@ -22,13 +22,18 @@
 }
 
 *{ box-sizing:border-box; }
-html, body{
+html{
   height: 100%;
-  width: 100%;
-  margin: 0;
-  padding: 0;
   background: #0b0f1a;
-  overflow: hidden;
+}
+
+body{
+  margin: 0;
+  min-height: 100dvh;         /* important for iOS home screen */
+  background: #0b0f1a;        /* prevents blue/white flash */
+  overflow-y: auto;           /* allow scroll */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
   color:var(--text);
@@ -39,11 +44,10 @@ html, body{
     radial-gradient(1000px 800px at 55% 88%, rgba(185,255,75,.14), transparent 60%),
     linear-gradient(180deg,var(--bg1),var(--bg0));
 }
-
 .tmWrap{
-  height: 100vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 14px 14px 44px;
 }
 
 /* HEADER */
